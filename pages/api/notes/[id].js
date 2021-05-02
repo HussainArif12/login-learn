@@ -7,6 +7,6 @@ export default async (req, res) => {
   if (!user) return res.json({ error: "Not logged in" });
   const note = await Note.findOne({ _id: req.query.id, user: user.id });
   if (note) {
-    res.json({ note });
+    return res.json({ note });
   } else return res.json({ error: "No permission" });
 };

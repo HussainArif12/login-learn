@@ -8,7 +8,9 @@ export default async (req, res) => {
   if (req.method === "GET") {
     let note = await Note.findOne({ user: user.id, _id: req.query.id }).lean();
     if (note) return res.json({ note });
-    else return res.json({ error: "No permission" });
+    else {
+      return res.json({ error: "No permission" });
+    }
   }
   if (req.method === "PUT") {
     let note = await Note.findOneAndUpdate(
