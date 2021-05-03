@@ -7,8 +7,9 @@ export default async (req, res) => {
   await dbConnect();
   if (req.method === "GET") {
     let note = await Note.findOne({ user: user.id, _id: req.query.id }).lean();
-    if (note) return res.json({ note });
-    else {
+    if (note) {
+      return res.json({ note });
+    } else {
       return res.json({ error: "No permission" });
     }
   }

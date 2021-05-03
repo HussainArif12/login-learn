@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI =
-  "mongodb+srv://hussain:12345@cluster0.reegf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const MONGODB_URI = process.env.DB_CONNECT;
 
 /**
  * Global is used here to maintain a cached connection across hot reloads

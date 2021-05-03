@@ -5,8 +5,8 @@ export default async (req, res) => {
   const user = await getSession({ req });
 
   await dbConnect();
-  if (user) {
-    console.log("user id: " + user.id);
+  if (!user) {
+    return res.json({ error: "not logged in" });
   }
   if (req.method === "POST") {
     const note = new Note({
