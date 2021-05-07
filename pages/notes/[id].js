@@ -2,6 +2,7 @@ import { getSession } from "next-auth/client";
 export default function Specific({ data }) {
   return (
     <>
+      {/* Remove error logging from here. User needs to be redirected*/}
       {data.error && <p>{data.error} </p>}
       {data.note && (
         <div>
@@ -22,6 +23,15 @@ export async function getServerSideProps(context) {
     options
   );
   const json = await res.json();
+
+  if (json.error) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {

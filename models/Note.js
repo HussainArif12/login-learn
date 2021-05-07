@@ -10,7 +10,4 @@ const noteSchema = new Schema({
 });
 mongoose.models = {};
 
-//const Note = mongoose.model("Note", noteSchema);
-
-//export default Note;
-export default mongoose.models.Pet || mongoose.model("note", noteSchema);
+export default mongoose.models.Note || mongoose.model("Note", noteSchema);

@@ -14,7 +14,7 @@ export default async (req, res) => {
         user: session.id,
       },
       function (err, docs) {
-        if (!docs) return res.json({ error: "security not granted" });
+        if (err) console.log(err);
       }
     );
     res.end();
